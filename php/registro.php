@@ -21,9 +21,10 @@
         window.location = '../index.php';
         </script>";
     }else{
-        echo"<script>
-        window.location = './login.php';
-        </script>";
+        echo'<script>
+        window.alert("Error en registro");
+        window.location = "../registro.php";
+        </script>';
     }
 
 ?>
