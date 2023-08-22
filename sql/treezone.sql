@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 21, 2023 at 11:04 PM
+-- Generation Time: Aug 22, 2023 at 02:08 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -33,6 +33,13 @@ CREATE TABLE `aire` (
   `fecha` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `aire`
+--
+
+INSERT INTO `aire` (`id`, `nivel`, `fecha`) VALUES
+(1, '1', '2023-08-21');
+
 -- --------------------------------------------------------
 
 --
@@ -45,6 +52,13 @@ CREATE TABLE `arboles` (
   `fecha` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `arboles`
+--
+
+INSERT INTO `arboles` (`id`, `cantidad`, `fecha`) VALUES
+(1, '1', '2023-08-21');
+
 -- --------------------------------------------------------
 
 --
@@ -55,6 +69,13 @@ CREATE TABLE `ciudad` (
   `id` int(11) NOT NULL,
   `nombre` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `ciudad`
+--
+
+INSERT INTO `ciudad` (`id`, `nombre`) VALUES
+(1, 'Ciudad 1');
 
 -- --------------------------------------------------------
 
@@ -72,6 +93,13 @@ CREATE TABLE `sector` (
   `arbol_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `sector`
+--
+
+INSERT INTO `sector` (`id`, `nombre`, `gp`, `longitud`, `ciud_id`, `aire_id`, `arbol_id`) VALUES
+(1, 'Sector 1', '0', '0', 1, 1, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -85,6 +113,13 @@ CREATE TABLE `ubicación` (
   `sect_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `ubicación`
+--
+
+INSERT INTO `ubicación` (`id`, `frecuente`, `usua_id`, `sect_id`) VALUES
+(2, 'a', 5, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -96,8 +131,16 @@ CREATE TABLE `usuarios` (
   `nombre` text NOT NULL,
   `correo` text NOT NULL,
   `contraseña` text NOT NULL,
-  `residencia` text NOT NULL
+  `residencia` text NOT NULL,
+  `fecha` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `nombre`, `correo`, `contraseña`, `residencia`, `fecha`) VALUES
+(5, 'a', 'a@a', 'c4ca4238a0b923820dcc509a6f75849b', 'a', '2023-08-21 23:10:45');
 
 --
 -- Indexes for dumped tables
@@ -126,9 +169,9 @@ ALTER TABLE `ciudad`
 --
 ALTER TABLE `sector`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `ciud_id` (`ciud_id`,`aire_id`,`arbol_id`),
   ADD KEY `arbol_id` (`arbol_id`),
-  ADD KEY `aire_id` (`aire_id`);
+  ADD KEY `aire_id` (`aire_id`),
+  ADD KEY `ciud_id` (`ciud_id`);
 
 --
 -- Indexes for table `ubicación`
@@ -136,7 +179,7 @@ ALTER TABLE `sector`
 ALTER TABLE `ubicación`
   ADD PRIMARY KEY (`id`),
   ADD KEY `usua_id` (`usua_id`,`sect_id`),
-  ADD KEY `sect_id` (`sect_id`);
+  ADD KEY `ubicacion_ibfk_1` (`sect_id`);
 
 --
 -- Indexes for table `usuarios`
@@ -152,66 +195,57 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT for table `aire`
 --
 ALTER TABLE `aire`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `arboles`
 --
 ALTER TABLE `arboles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `ciudad`
 --
 ALTER TABLE `ciudad`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `sector`
 --
 ALTER TABLE `sector`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `ubicación`
 --
 ALTER TABLE `ubicación`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `ciudad`
---
-ALTER TABLE `ciudad`
-  ADD CONSTRAINT `ciudad_ibfk_1` FOREIGN KEY (`id`) REFERENCES `sector` (`ciud_id`);
-
---
 -- Constraints for table `sector`
 --
 ALTER TABLE `sector`
   ADD CONSTRAINT `sector_ibfk_1` FOREIGN KEY (`arbol_id`) REFERENCES `arboles` (`id`),
-  ADD CONSTRAINT `sector_ibfk_2` FOREIGN KEY (`aire_id`) REFERENCES `aire` (`id`);
+  ADD CONSTRAINT `sector_ibfk_2` FOREIGN KEY (`aire_id`) REFERENCES `aire` (`id`),
+  ADD CONSTRAINT `sector_ibfk_3` FOREIGN KEY (`ciud_id`) REFERENCES `ciudad` (`id`);
 
 --
 -- Constraints for table `ubicación`
 --
 ALTER TABLE `ubicación`
+  ADD CONSTRAINT `ubicacion_ibfk_1` FOREIGN KEY (`sect_id`) REFERENCES `sector` (`id`),
+  ADD CONSTRAINT `ubicacion_ibfk_2` FOREIGN KEY (`usua_id`) REFERENCES `usuarios` (`id`),
   ADD CONSTRAINT `ubicación_ibfk_1` FOREIGN KEY (`sect_id`) REFERENCES `sector` (`id`);
-
---
--- Constraints for table `usuarios`
---
-ALTER TABLE `usuarios`
-  ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`id`) REFERENCES `ubicación` (`usua_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
