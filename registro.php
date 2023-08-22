@@ -62,9 +62,9 @@
         <label><i class="fa-solid fa-lock"></i>Confirmar contraseña</label><br>
         <div class="">
           <input class="" maxlength="15"
-            oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" id="Contra"
+            oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" id="Contra2"
             type="password" placeholder="Contraseña" name="password2" required>
-          <img onclick="VerC()" src="./img/visible.png">
+          <img onclick="VerC2()" src="./img/visible.png">
         </div>
         <label><i class="fa-solid fa-user"></i>Residencia</label><br>
         <input class="" type="text" placeholder="Residencia" required name="residencia">  
