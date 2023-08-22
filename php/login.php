@@ -11,7 +11,7 @@
 
     $sql = "SELECT * FROM usuarios WHERE correo = '$correo' AND contraseña = '$contraseña'";
 
-    echo $sql;
+    //echo $sql;
 
     $query = mysqli_query($con,$sql) ;
 

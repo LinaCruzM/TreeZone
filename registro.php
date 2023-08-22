@@ -41,26 +41,11 @@
 </head>
 <body>
   <header>
-    <div class="header1">
-      <!--encabezado redes sociales-->
-      <div class="divHeader">
-        <a onclick=""><i class="fa-brands fa-whatsapp"></i></a>
-        <a onclick=""><i class="fa-brands fa-instagram"></i></a>
-        <a onclick=""><i class="fa-brands fa-facebook-f"></i></a>
-        <a onclick=""><i class="fa-brands fa-twitter"></i></a>
-      </div>
-    </div>
-    <!--Encabezado-->
-    <div class="">
-      <div>
-        <img src="./img/" alt="Logo">
-      </div>
-    </div>
   </header>
   <main>
-    <!--Formulario inicio sesión-->
+    <!--Formulario rtegistro-->
     <section class="">
-      <h3>Iniciar sesión</h3>
+      <h3>Registro</h3>
       <br><br>
       <form id="" action="./php/registro.php" method="post" class="">
         <label><i class="fa-solid fa-user"></i>Correo electrónico</label><br>
@@ -82,7 +67,7 @@
           <img onclick="VerC()" src="./img/visible.png">
         </div>
         <label><i class="fa-solid fa-user"></i>Residencia</label><br>
-        <input class="" type="text" placeholder="Recidencia" required name="residencia">  
+        <input class="" type="text" placeholder="Residencia" required name="residencia">  
         <a class="link" href="./login.php">Inicia sesión</a><br><br>
         <button type="submit" class="button1">Registrarme</button>
       </form>

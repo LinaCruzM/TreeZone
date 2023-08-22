@@ -20,6 +20,10 @@
         echo"<script>
         window.location = '../index.php';
         </script>";
+    }else{
+        echo"<script>
+        window.location = './registro.php';
+        </script>";
     }
 
 ?>
