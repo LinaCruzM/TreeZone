@@ -22,7 +22,7 @@
         </script>";
     }else{
         echo"<script>
-        window.location = './registro.php';
+        window.location = './login.php';
         </script>";
     }
 
