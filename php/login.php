@@ -26,7 +26,6 @@
         window.alert("Error en inicio de sesión");
         window.location = "../login.php";
         </script>';
-
     }
 
     $_SESSION['correo'] = $correo;
