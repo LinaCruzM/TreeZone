@@ -10,11 +10,15 @@
         $residencia = $_POST['residencia'],
     );
 
-    $sql = "INSERT INTO usuarios(nombre, correo, contraseña, residencia) VALUES ('$nombre','$correo','$contraseña','$residencia')";
+    $CContraseña= md5($_POST['CContraseña']);
 
-    echo $sql;
 
-    $query = mysqli_query($con,$sql) ;
+    if ($CContrarseña == $Contraseña) {
+        $sql = "INSERT INTO usuarios(nombre, correo, contraseña, residencia) VALUES ('$nombre','$correo','$contraseña','$residencia')";
+
+        echo $sql;
+
+        $query = mysqli_query($con,$sql) ;
 
     if ($query > 0) {
         echo"<script>
@@ -23,6 +27,12 @@
     }else{
         echo'<script>
         window.alert("Error en registro");
+        window.location = "../registro.php";
+        </script>';
+    }
+    } else {
+        echo'<script>
+        window.alert("Las contraseñas no coinciden");
         window.location = "../registro.php";
         </script>';
     }
