@@ -21,6 +21,11 @@ class Usuarios{
 
     }
 
+        public function authenticate(){
+        $sql = "SELECT * FROM users WHERE mail = '$this->mail' AND password = '$this->password'";
+        return $sql;
+    }
+
 }
 
 class Sector{
