@@ -9,8 +9,7 @@
         $contraseña = md5($_POST['contraseña']),
     );
 
-    $sql = "SELECT * FROM usuarios WHERE correo = '$correo' AND contraseña = '$contraseña'";
-
+      $sql = $user->authenticate();
     //echo $sql;
 
     $query = mysqli_query($con,$sql) ;
