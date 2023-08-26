@@ -4,7 +4,7 @@
 
     session_start();
 
-    ini_set('display_errors', 0);
+    //ini_set('display_errors', 0);
 
     date_default_timezone_set("America/Bogota");
     $correo = $_SESSION['correo'];
@@ -61,56 +61,42 @@
   <main>
 
     <section class="">
-      <h3>Crea un lugar frecuente</h3>
 
-      <form action="./php/LFrecuente.php" method="post" class="">        
-        <label><i class="fa-solid fa-user"></i>Nombre</label><br>
-        <input type="text" placeholder="Nombre" autofocus autocomplete="on" required name="nombre">
-        <label><i class="fa-solid fa-user"></i>Sector</label><br>
-        <select class="form-control" autocomplete="on" required name="sector">
-            <option value="">Seleccione una opción</option>
-            <?php
-
-            $sql = "SELECT * FROM sector";
-            $consulta = mysqli_query($con ,$sql );
-
-            if (mysqli_num_rows ($consulta) > 0)  {
-            while ($resultado = mysqli_fetch_assoc($consulta)){
-            ?>
-              <option value="<?php echo $resultado['id']?>"><?php echo $resultado['nombre']?></option>
-              <?php
-            }}
-        ?>
-            </select>
-        <button type="submit" class="button1">Enviar</button>
-      </form>
-
-      <h3>Lugares Frecuentes:</h3>    
+      <h3>Editar Lugar Frecuente:</h3>    
       
       <?php
-        $sql = "SELECT * FROM ubicación WHERE usua_id = ('$id')";
+        $id = $_POST['id'];
+        $sql = "SELECT * FROM ubicación WHERE id = ('$id')";
         $consulta= mysqli_query($con ,$sql );
         if (mysqli_num_rows ($consulta) > 0)  {
         while ($resultado = mysqli_fetch_assoc($consulta)){
 
       ?>
-      <form action="./editar.php" method="post">
+      <form action="./php/editar.php" method="post">
       <div class="card text-start">
         <div class="card-body">
         <input type="hidden" name="id" value="<?php echo $resultado['id'] ?>">
-          <h4 class="card-title"><?php echo $resultado['frecuente'] ?></h4>
+        <h4 class="card-title"><?php echo $resultado['frecuente'] ?></h4>
+          <input class="card-text" type="text" placeholder="Nombre" autofocus autocomplete="on" name="nombre" value="<?php echo $resultado['frecuente'] ?>"> 
           <?php $id=$resultado['sect_id'];
             $sql2 = "SELECT ubicación.sect_id, sector.id, sector.nombre FROM ubicación INNER JOIN sector WHERE ubicación.sect_id=('$id') AND sector.id =('$id');";
             $query2 = mysqli_query($con ,$sql2 );
             $resultado2 = mysqli_fetch_assoc($query2);
-            echo "Sector: ".$resultado2['nombre'] ?></p>
-            <p class="card-text">
-          <input type="submit" button class="btn" value="Editar">
+            echo "Sector: ".$resultado2['nombre'] ?>
+          <select class="form-control" autocomplete="on" required name="sector">
+          <option value="<?php echo $resultado['sect_id']?>"> <?php echo $resultado2['nombre']?></option>
+          <?php $sql3 = "SELECT * FROM sector";
+            $consulta3 = mysqli_query($con ,$sql3 );
+
+            if (mysqli_num_rows ($consulta3) > 0)  {
+            while ($resultado3 = mysqli_fetch_assoc($consulta3)){
+            ?>
+              <option value="<?php echo $resultado3['id']?>"><?php echo $resultado3['nombre']?></option>
+              <?php
+            }}
+        ?>
+          <input type="submit" button class="btn" value="Enviar">
           </form>
-          <form action="./php/borrar.php" method="post">
-        <input type="hidden" name="id" value="<?php echo $resultado['id'] ?>">
-        <input type="submit" button class="btn" value="Eliminar">
-        </form>
         </div>
       </div>
       <?php

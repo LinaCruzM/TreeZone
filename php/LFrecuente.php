@@ -3,25 +3,24 @@
     include 'conexion.php';
     date_default_timezone_set("America/Bogota");
     include_once './clases.php';
+    $id = $_SESSION['id'];
     $ubicación = new Ubicación(
-        $nombre = $_POST['nombre'],
-        $sector = $_POST['sector'],
+        $_POST['nombre'],
+        $id,
+        $_POST['sector'],
     );
 
-    $id = $_SESSION['id'];
+    $ubicación->guardar();
+    echo"<script>
+    window.location = '../index.php';
+    </script>";
 
-    $sql = "INSERT INTO ubicación(frecuente,usua_id,sect_id) VALUES ('$nombre','$id','$sector')";
-
-    echo $sql;
-
-    $consulta = mysqli_query($con,$sql) ;
-
-    if ($consulta > 0) {
+    /*if ($consulta > 0) {
         echo"<script>
         window.location = '../index.php';
         </script>";
     }else{
         echo "Error al insertar";
-    }
+    }*/
 
 ?>

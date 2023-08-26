@@ -126,12 +126,18 @@ class Sector{
 class Ubicación{
 
     public $Nombre;
+    public $Usuario;
+    public $Sector;
     public $id;
     const TABLA = 'ubicación';
 
-    public function __construct($Nombre, $id=null) {
+    public function __construct($Nombre,$Usuario,$Sector, $id=null) {
 
         $this->Nombre = $Nombre;
+
+        $this->Usuario = $Usuario;
+
+        $this->Sector = $Sector;
 
         $this->id = $id;
 
@@ -145,9 +151,9 @@ class Ubicación{
 
         $consulta->bindParam(':frecuente', $this->Nombre);
 
-        $consulta->bindParam(':usua_id', );
+        $consulta->bindParam(':usua_id',$this->Usuario );
 
-        $consulta->bindParam(':sect_id', );
+        $consulta->bindParam(':sect_id',$this->Sector );
 
 
         $consulta->execute();

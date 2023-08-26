@@ -1,25 +1,25 @@
 <?php
-
+/*
     session_start();
 
     ini_set('display_errors', 0);
 
     date_default_timezone_set("America/Bogota");
-    include_once './php/clases.php';
-    $usuario = new Usuarios(
-      0,
-      $correo = $_SESSION['correo'],
-      $contraseña = $_SESSION['contraseña'],
-      0
-  );
+    include './php/conexion.php';
+    $correo = $_SESSION['correo'];
+    $contraseña = $_SESSION['contraseña'];  
 
-  $consulta = $usuario->iniciar();
+    $sql = "SELECT * FROM usuarios WHERE correo = '$correo' AND contraseña = '$contraseña'";
 
-  if ($consulta->rowCount() > 0)  {
+    //echo $sql;
+
+    $consulta = mysqli_query($con,$sql) ;
+
+      if (mysqli_num_rows ($consulta) > 0)  {
         echo"<script>
         window.location = './index.php';
         </script>";
-      }
+      }*/
 ?>
 
 
