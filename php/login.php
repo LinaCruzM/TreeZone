@@ -3,20 +3,16 @@
     session_start();
     include_once './clases.php';
     date_default_timezone_set("America/Bogota");
-    include 'conexion.php';
     $usuario = new Usuarios(
+        0,
         $correo = $_POST['correo'],
         $contraseña = md5($_POST['contraseña']),
+        0
     );
 
-      $sql = $user->authenticate();
-    //echo $sql;
+    $consulta = $usuario->iniciar();
 
-    $query = mysqli_query($con,$sql) ;
-
-    $resultado = mysqli_fetch_assoc($query);
-
-    if (mysqli_num_rows ($query) > 0) {
+    if ($consulta->rowCount() > 0) {
         echo"<script>
         window.location = '../index.php';
         </script>";

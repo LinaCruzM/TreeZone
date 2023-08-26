@@ -1,20 +1,32 @@
 <?php
-class Connection extends PDO{
-    private $DB_type = 'mysql';
-    private $host = 'localhost';
-    private $DB_name = 'treezone';
-    private $DB_user = 'root';
-    private $password = '';
-    public function __construct(){
-            $this->connection = mysqli_connect($this->host, $this->DB_user, $this->password, $this->DB_name);
-            if (!$this->connection) {
-                die("Ha surgido un error y no se puede conectar a la base de datos. Detalle: " . mysqli_connect_error());
-        }
+
+class Conexion extends PDO {
+
+private $tipo_de_base = 'mysql';
+
+private $host = 'localhost';
+
+private $nombre_de_base = 'treezone';
+
+private $usuario = 'root';
+
+private $contrasena = '';
+
+public function __construct() {
+
+    try{
+
+        parent::__construct("{$this->tipo_de_base}:dbname={$this->nombre_de_base};host={$this->host};charset=utf8", $this->usuario, $this->contrasena);
+
+    }catch(PDOException $e){
+
+        echo 'Ha surgido un error y no se puede conectar a la base de datos. Detalle: ' . $e->getMessage();
+
+        exit;
+
     }
-    public function getConnection() {
-        return $this->connection;
-    }
+
 }
-$obj= new Connection();
-$cone= $obj->getConnection();;
+}
+
 ?>

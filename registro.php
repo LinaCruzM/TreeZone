@@ -5,17 +5,17 @@
     ini_set('display_errors', 0);
 
     date_default_timezone_set("America/Bogota");
-    include './php/conexion.php';
-    $correo = $_SESSION['correo'];
-    $contraseña = $_SESSION['contraseña'];  
+    include_once './php/clases.php';
+    $usuario = new Usuarios(
+      0,
+      $correo = $_SESSION['correo'],
+      $contraseña = $_SESSION['contraseña'],
+      0
+  );
 
-    $sql = "SELECT * FROM usuarios WHERE correo = '$correo' AND contraseña = '$contraseña'";
+  $consulta = $usuario->iniciar();
 
-    //echo $sql;
-
-    $consulta = mysqli_query($con,$sql) ;
-
-      if (mysqli_num_rows ($consulta) > 0)  {
+  if ($consulta->rowCount() > 0)  {
         echo"<script>
         window.location = './index.php';
         </script>";

@@ -2,31 +2,24 @@
 
     session_start();
 
-    ini_set('display_errors', 0);
+    //ini_set('display_errors', 0);
 
     date_default_timezone_set("America/Bogota");
-    include './php/conexion.php';
-    $correo = $_SESSION['correo'];
-    $contraseña = $_SESSION['contraseña'];  
+    include_once './php/clases.php';
+    $usuario = new Usuarios(
+      0,
+      $correo = $_SESSION['correo'],
+      $contraseña = $_SESSION['contraseña'],
+      0
+  );
 
-    $sql = "SELECT * FROM usuarios WHERE correo = '$correo' AND contraseña = '$contraseña'";
+  $consulta = $usuario->iniciar();
 
-    //echo $sql;
-
-    $consulta = mysqli_query($con,$sql) ;
-
-    $resultado = mysqli_fetch_assoc($consulta);
-
-    $id = $resultado['id'];
-
-    if (mysqli_num_rows ($consulta) > 0)  {
-    }else{
-      echo"<script>
-      window.location = './login.php';
-      </script>";
-    }
-
-    $_SESSION['id'] = $id;
+  if ($consulta->rowCount() > 0)  {
+        echo"<script>
+        window.location = './index.php';
+        </script>";
+      }
 ?>
 
 
@@ -49,7 +42,7 @@
     <div class="">
         <div class="dropdown">
           <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-          <?php echo $resultado['nombre'] ?>
+          <?php echo "Nombre" ?>
           </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
           <li><a class="dropdown-item" href="./php/logout.php">Cerrar sesión</a></li>
@@ -87,6 +80,7 @@
       <h3>Lugares Frecuentes:</h3>    
       
       <?php
+      /*
         $sql = "SELECT * FROM ubicación WHERE usua_id = ('$id')";
         $consulta= mysqli_query($con ,$sql );
         $sql2 = "SELECT * FROM sector";
@@ -110,7 +104,7 @@
 
       }}else{
         echo '<p class="">No tienes Lugares Frecuentes Registrados</p>';
-      }
+      }*/
   ?>
 
     </section>
