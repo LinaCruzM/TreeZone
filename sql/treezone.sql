@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 22, 2023 at 02:08 AM
+-- Generation Time: Aug 27, 2023 at 06:53 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -75,7 +75,7 @@ CREATE TABLE `ciudad` (
 --
 
 INSERT INTO `ciudad` (`id`, `nombre`) VALUES
-(1, 'Ciudad 1');
+(1, 'Bogotá');
 
 -- --------------------------------------------------------
 
@@ -98,7 +98,26 @@ CREATE TABLE `sector` (
 --
 
 INSERT INTO `sector` (`id`, `nombre`, `gp`, `longitud`, `ciud_id`, `aire_id`, `arbol_id`) VALUES
-(1, 'Sector 1', '0', '0', 1, 1, 1);
+(1, 'Antonio Nariño', '0', '0', 1, 1, 1),
+(2, 'Barrios Unidos', '0', '0', 1, 1, 1),
+(3, 'Bosa', '0', '0', 1, 1, 1),
+(4, 'Chapinero', '0', '0', 1, 1, 1),
+(5, 'Ciudad Bolívar', '0', '0', 1, 1, 1),
+(6, 'Engativá', '0', '0', 1, 1, 1),
+(7, 'Fontibón\r\n', '0', '0', 1, 1, 1),
+(8, 'Kennedy', '0', '0', 1, 1, 1),
+(9, 'La Candelaria', '0', '0', 1, 1, 1),
+(10, 'Los Mártires', '0', '0', 1, 1, 1),
+(11, 'Puente Aranda', '0', '0', 1, 1, 1),
+(12, 'Rafael Uribe Uribe', '0', '0', 1, 1, 1),
+(13, 'San Cristóbal', '0', '0', 1, 1, 1),
+(14, 'Santa fe', '0', '0', 1, 1, 1),
+(15, 'Suba', '0', '0', 1, 1, 1),
+(16, 'Sumapaz', '0', '0', 1, 1, 1),
+(17, 'Teusaquillo', '0', '0', 1, 1, 1),
+(18, 'Tunjuelito', '0', '0', 1, 1, 1),
+(19, 'Usaquén', '0', '0', 1, 1, 1),
+(20, 'Usme', '0', '0', 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -118,7 +137,8 @@ CREATE TABLE `ubicación` (
 --
 
 INSERT INTO `ubicación` (`id`, `frecuente`, `usua_id`, `sect_id`) VALUES
-(2, 'a', 5, 1);
+(2, 'a', 5, 1),
+(3, 'a', 5, 1);
 
 -- --------------------------------------------------------
 
@@ -140,7 +160,8 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nombre`, `correo`, `contraseña`, `residencia`, `fecha`) VALUES
-(5, 'a', 'a@a', 'c4ca4238a0b923820dcc509a6f75849b', 'a', '2023-08-21 23:10:45');
+(5, 'a', 'a@a', 'c4ca4238a0b923820dcc509a6f75849b', 'a', '2023-08-21 23:10:45'),
+(9, '1', 'a@a', 'c4ca4238a0b923820dcc509a6f75849b', '1', '2023-08-26 17:36:36');
 
 --
 -- Indexes for dumped tables
@@ -213,19 +234,19 @@ ALTER TABLE `ciudad`
 -- AUTO_INCREMENT for table `sector`
 --
 ALTER TABLE `sector`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `ubicación`
 --
 ALTER TABLE `ubicación`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Constraints for dumped tables
