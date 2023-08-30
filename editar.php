@@ -1,33 +1,20 @@
 <?php
 
-    include './php/cone.php';
+    require './php/clases.php';
 
     session_start();
 
-    //ini_set('display_errors', 0);
-
     date_default_timezone_set("America/Bogota");
-    $correo = $_SESSION['correo'];
-    $contraseña = $_SESSION['contraseña'];  
 
-    $sql = "SELECT * FROM usuarios WHERE correo = '$correo' AND contraseña = '$contraseña'";
+    $consulta = Usuarios::iniciar();
 
-    //echo $sql;
+    foreach ($consulta as $item):
 
-    $consulta = mysqli_query($con,$sql) ;
+    $item['id'];
 
-    $resultado = mysqli_fetch_assoc($consulta);
+    endforeach;
 
-    $id = $resultado['id'];
-
-    /*if (mysqli_num_rows ($consulta) > 0)  {
-    }else{
-      echo"<script>
-      window.location = './login.php';
-      </script>";
-    }*/
-
-    $_SESSION['id'] = $id;
+    $_SESSION['id'] = $item['id'];
 ?>
 
 
@@ -50,7 +37,7 @@
     <div class="">
         <div class="dropdown">
           <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-          <?php echo $resultado['nombre'] ?>
+          <?php echo $item['nombre'] ?>
           </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
           <li><a class="dropdown-item" href="./php/logout.php">Cerrar sesión</a></li>
@@ -64,47 +51,42 @@
 
       <h3>Editar Lugar Frecuente:</h3>    
       
-      <?php
-        $id = $_POST['id'];
-        $sql = "SELECT * FROM ubicación WHERE id = ('$id')";
-        $consulta= mysqli_query($con ,$sql );
-        if (mysqli_num_rows ($consulta) > 0)  {
-        while ($resultado = mysqli_fetch_assoc($consulta)){
+      <?php 
+        $_SESSION['sect_id'] = $_POST['id'];
+        $consulta = Ubicación::mostrar3();
 
+        foreach ($consulta as $item):
       ?>
       <form action="./php/editar.php" method="post">
       <div class="card text-start">
         <div class="card-body">
-        <input type="hidden" name="id" value="<?php echo $resultado['id'] ?>">
-        <h4 class="card-title"><?php echo $resultado['frecuente'] ?></h4>
-          <input class="card-text" type="text" placeholder="Nombre" autofocus autocomplete="on" name="nombre" value="<?php echo $resultado['frecuente'] ?>"> 
-          <?php $id=$resultado['sect_id'];
-            $sql2 = "SELECT ubicación.sect_id, sector.id, sector.nombre FROM ubicación INNER JOIN sector WHERE ubicación.sect_id=('$id') AND sector.id =('$id');";
-            $query2 = mysqli_query($con ,$sql2 );
-            $resultado2 = mysqli_fetch_assoc($query2);
-            echo "Sector: ".$resultado2['nombre'] ?>
+        <input type="hidden" name="id" value="<?php echo $item['id'] ?>">
+        <h4 class="card-title"><?php echo $item['frecuente'] ?></h4>
+          <input class="card-text" type="text" placeholder="Nombre" autofocus autocomplete="on" name="nombre" value="<?php echo $item['frecuente'] ?>"> 
+          <?php $id=$item['sect_id'];
+            $consulta = Ubicación::mostrar2();
+            foreach($consulta as $item2):
+            echo "<p>Sector:".
+            $item2['nombre'];
+            endforeach;
+            echo"</p>"?>;
           <select class="form-control" autocomplete="on" required name="sector">
-          <option value="<?php echo $resultado['sect_id']?>"> <?php echo $resultado2['nombre']?></option>
-          <?php $sql3 = "SELECT * FROM sector";
-            $consulta3 = mysqli_query($con ,$sql3 );
+          <option value="<?php echo $item['sect_id']?>"> <?php echo $item2['nombre']?></option>
+          <?php
+            $consulta = Sector::mostrar();
 
-            if (mysqli_num_rows ($consulta3) > 0)  {
-            while ($resultado3 = mysqli_fetch_assoc($consulta3)){
-            ?>
-              <option value="<?php echo $resultado3['id']?>"><?php echo $resultado3['nombre']?></option>
-              <?php
-            }}
-        ?>
+            foreach ($consulta as $item3):
+
+            echo '<option value="'.$item3['$id'].'">'.$item3['nombre'].'</option>';
+            endforeach;
+        ?></select>
           <input type="submit" button class="btn" value="Enviar">
           </form>
         </div>
       </div>
       <?php
-
-      }}else{
-        echo '<p class="">No tienes Lugares Frecuentes Registrados</p>';
-      }
-  ?>
+        endforeach;
+      ?>
 
     </section>
   </main>

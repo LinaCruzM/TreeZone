@@ -1,26 +1,18 @@
 <?php
-/*
+    ini_set('display_errors', 0);
+    require './php/clases.php';
+
     session_start();
 
-    ini_set('display_errors', 0);
-
     date_default_timezone_set("America/Bogota");
-    include './php/conexion.php';
-    $correo = $_SESSION['correo'];
-    $contraseña = $_SESSION['contraseña'];  
 
-    $sql = "SELECT * FROM usuarios WHERE correo = '$correo' AND contraseña = '$contraseña'";
+    $consulta = Usuarios::iniciar();
 
-    //echo $sql;
+    foreach ($consulta as $item):
 
-    $consulta = mysqli_query($con,$sql) ;
-
-      if (mysqli_num_rows ($consulta) > 0)  {
-        echo"<script>
-        window.location = './index.php';
-        </script>";
-      }*/
+    endforeach;
 ?>
+
 
 
 <!DOCTYPE html>

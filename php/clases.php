@@ -1,6 +1,6 @@
 <?php
 
-require_once 'conexion.php';
+require 'conexion.php';
 
 class Usuarios{
 
@@ -67,9 +67,14 @@ class Usuarios{
     }
     public function iniciar(){
         $conexion = new Conexion();
-        $consulta = $conexion->prepare("SELECT * FROM usuarios WHERE correo = '$this->Correo' AND contraseña = '$this->Contrasena'");
+        $Correo = $_SESSION['correo'];
+        $Contraseña = $_SESSION['contraseña'];  
+        $consulta = $conexion->prepare("SELECT * FROM " . self::TABLA ." WHERE correo = '$Correo' AND contraseña = '$Contraseña'");
         $consulta->execute();
-        return $consulta;
+
+        $registros = $consulta->fetchAll();
+
+    return $registros;
         
     }
     public function Ver_Ubicación(){
@@ -90,6 +95,7 @@ class Sector{
     public $Longitud;
     public $Georeferenciador;
     public $id;
+    const TABLA = 'sector';
 
     public function Obtener_Información($Nombre,$Ciudad,$Longitud,$Georeferenciador){
 
@@ -112,6 +118,15 @@ class Sector{
 
         $this->id = $id;
 
+    }
+    public function mostrar(){
+        $conexion = new Conexion();
+        $consulta = $conexion->prepare("SELECT * FROM " . self::TABLA );
+        $consulta->execute();
+
+        $registros = $consulta->fetchAll();
+
+    return $registros;
     }
     public function ver_CalidadAire() {
 
@@ -157,7 +172,6 @@ class Ubicación{
 
         $consulta->bindParam(':sect_id',$this->Sector );
 
-
         $consulta->execute();
 
         $this->id = $conexion->lastInsertId();
@@ -167,15 +181,55 @@ class Ubicación{
         $conexion = null;
 
     }
-    public function Editar_LugarFrecuente($Nombre){
+    public function mostrar(){
+        $conexion = new Conexion();
+        $id = $_SESSION['id'];
+        $consulta = $conexion->prepare("SELECT * FROM " . self::TABLA ." WHERE usua_id = '$id'");
+        $consulta->execute();
 
-        $this->Nombre = $Nombre;
+        $registros = $consulta->fetchAll();
+
+    return $registros;
+    }
+    public function mostrar2(){
+        $conexion = new Conexion();
+        $id = $_SESSION['sect_id'];
+        $consulta = $conexion->prepare("SELECT ubicación.sect_id, sector.id, sector.nombre FROM ' . self::TABLA .' INNER JOIN sector WHERE ubicación.sect_id=('$id') AND sector.id =('$id');");
+        $consulta->execute();
+        
+        $registros = $consulta->fetchAll();
+
+    return $registros;
+    }
+    public function mostrar3(){
+        $conexion = new Conexion();
+        $id = $_SESSION['sect_id'];
+        $consulta = $conexion->prepare("SELECT * FROM ' . self::TABLA .' WHERE id = ('$id')");
+        $consulta->execute();
+        
+        $registros = $consulta->fetchAll();
+
+    return $registros;
+    }
+    
+    public function Editar_LugarFrecuente(){
+
+        $conexion = new Conexion();
+        $id = $_SESSION['idE'];
+        $nombre = $_SESSION['nombre'];
+        $sector = $_SESSION['sector'];
+        $consulta = $conexion->prepare("UPDATE ' . self::TABLA .' SET frecuente = '$nombre', sect_id = '$sector' WHERE id = '$id'");  
+        $consulta->execute();
     }
     public function Eliminar_LugarFrecuente(){
+        $conexion = new Conexion();
+        $id = $_SESSION['idE2'];
+        $consulta = $conexion->prepare("DELETE FROM ' . self::TABLA .' WHERE id = '$id'");  
+        $consulta->execute();
 
     }
 
-}
+} 
 
 class Arboles{
 

@@ -1,23 +1,19 @@
+
 <?php
-
     session_start();
-
-    include './cone.php';
-
     date_default_timezone_set("America/Bogota");
+    include './clases.php';
+    $_SESSION['idE2'] = $_POST['id'];
 
-    $id = $_POST['id'];
+    $ubicación = new Ubicación(
+        0,
+        0,
+        0,
+    );
 
-    $sql = "DELETE FROM ubicación WHERE id = $id";
-
-    echo $sql;
-
-    $query = mysqli_query($con,$sql) ;
-
-    if ($query > 0) {
-        echo"<script>
-        window.location = '../index.php';
-        </script>";
-    }
+    echo $ubicación->Eliminar_LugarFrecuente();
+           /*echo"<script>
+            window.location = '../index.php';
+            </script>";*/
 
 ?>

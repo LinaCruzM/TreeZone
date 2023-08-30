@@ -1,26 +1,22 @@
 <?php
     session_start();
-    include 'conexion.php';
     date_default_timezone_set("America/Bogota");
-    include_once './clases.php';
+    include './clases.php';
     $id = $_SESSION['id'];
     $ubicación = new Ubicación(
-        $_POST['nombre'],
+        $nombre = $_POST['nombre'],
         $id,
-        $_POST['sector'],
+        $sector = $_POST['sector'],
+        0
     );
 
+    $sql = "INSERT INTO ubicación(frecuente,usua_id,sect_id) VALUES ('$nombre','$id','$sector')";
+
     $ubicación->guardar();
+    echo $sql;
     echo"<script>
     window.location = '../index.php';
     </script>";
 
-    /*if ($consulta > 0) {
-        echo"<script>
-        window.location = '../index.php';
-        </script>";
-    }else{
-        echo "Error al insertar";
-    }*/
 
 ?>

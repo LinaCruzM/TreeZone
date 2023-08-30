@@ -1,7 +1,7 @@
 <?php
 
     date_default_timezone_set("America/Bogota");
-    include_once './clases.php';
+    include './clases.php';
     $usuario = new Usuarios(
         $_POST['nombre'],
         $_POST['correo'],
@@ -16,7 +16,7 @@
         $usuario->guardar();
 
         echo'<script>
-        window.location = "../index.php";
+        window.location = "../login.php";
         </script>';
 
     }else {

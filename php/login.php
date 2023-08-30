@@ -1,7 +1,7 @@
 <?php
 
     session_start();
-    include_once './clases.php';
+    include './clases.php';
     date_default_timezone_set("America/Bogota");
     $usuario = new Usuarios(
         0,
