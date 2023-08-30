@@ -1,19 +1,3 @@
-<?php
-    ini_set('display_errors', 0);
-    require './php/clases.php';
-
-    session_start();
-
-    date_default_timezone_set("America/Bogota");
-
-    $consulta = Usuarios::iniciar();
-
-    foreach ($consulta as $item):
-
-    endforeach;
-?>
-
-
 
 <!DOCTYPE html>
 <html lang="es">

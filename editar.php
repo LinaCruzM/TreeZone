@@ -69,7 +69,7 @@
             echo "<p>Sector:".
             $item2['nombre'];
             endforeach;
-            echo"</p>"?>;
+            echo"</p>"?>
           <select class="form-control" autocomplete="on" required name="sector">
           <option value="<?php echo $item['sect_id']?>"> <?php echo $item2['nombre']?></option>
           <?php
@@ -77,7 +77,7 @@
 
             foreach ($consulta as $item3):
 
-            echo '<option value="'.$item3['$id'].'">'.$item3['nombre'].'</option>';
+            echo '<option value="'.$item3['id'].'">'.$item3['nombre'].'</option>';
             endforeach;
         ?></select>
           <input type="submit" button class="btn" value="Enviar">

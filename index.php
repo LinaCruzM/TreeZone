@@ -62,7 +62,7 @@
 
             foreach ($consulta as $item):
 
-            echo '<option value="'.$item['$id'].'">'.$item['nombre'].'</option>';
+            echo '<option value="'.$item['id'].'">'.$item['nombre'].'</option>';
 
             endforeach;
 
@@ -93,13 +93,11 @@
           <input type="hidden" name="id" value="<?php echo $item['id'] ?>">
             <h4 class="card-title"><?php echo $item['frecuente'] ?></h4>
             <?php 
-                  $_SESSION['sect_id'] = $item['sect_id'];
-                  $consulta = Ubicación::mostrar2();
-                  foreach($consulta as $item):?>
-                  <p>Sector:<?php
-                  $item['nombre']?></p>;
-              <?php 
-                  endforeach; 
+            $_SESSION['sect_id'] = $item['sect_id'];
+            $consulta = Ubicación::mostrar2();
+            foreach ($consulta as $item):
+            echo "<p>Sector: " . $item['nombre'] . "</p>";
+            endforeach;
               ?></p>
               <p class="card-text">
             <input type="submit" button class="btn" value="Editar">

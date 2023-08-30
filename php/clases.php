@@ -65,7 +65,7 @@ class Usuarios{
         $conexion = null;
 
     }
-    public function iniciar(){
+    public static function iniciar(){
         $conexion = new Conexion();
         $Correo = $_SESSION['correo'];
         $Contraseña = $_SESSION['contraseña'];  
@@ -119,7 +119,7 @@ class Sector{
         $this->id = $id;
 
     }
-    public function mostrar(){
+    public static function mostrar(){
         $conexion = new Conexion();
         $consulta = $conexion->prepare("SELECT * FROM " . self::TABLA );
         $consulta->execute();
@@ -181,7 +181,7 @@ class Ubicación{
         $conexion = null;
 
     }
-    public function mostrar(){
+    public static function mostrar(){
         $conexion = new Conexion();
         $id = $_SESSION['id'];
         $consulta = $conexion->prepare("SELECT * FROM " . self::TABLA ." WHERE usua_id = '$id'");
@@ -191,20 +191,20 @@ class Ubicación{
 
     return $registros;
     }
-    public function mostrar2(){
+    public static function mostrar2() {
         $conexion = new Conexion();
         $id = $_SESSION['sect_id'];
-        $consulta = $conexion->prepare("SELECT ubicación.sect_id, sector.id, sector.nombre FROM ' . self::TABLA .' INNER JOIN sector WHERE ubicación.sect_id=('$id') AND sector.id =('$id');");
+        $consulta = $conexion->prepare("SELECT ubicación.sect_id, sector.id, sector.nombre FROM " . self::TABLA ." INNER JOIN sector where ubicación.sect_id AND sector.id = '$id' LIMIT 1");
         $consulta->execute();
-        
+    
         $registros = $consulta->fetchAll();
-
-    return $registros;
+    
+        return $registros;
     }
-    public function mostrar3(){
+    public static function mostrar3(){
         $conexion = new Conexion();
         $id = $_SESSION['sect_id'];
-        $consulta = $conexion->prepare("SELECT * FROM ' . self::TABLA .' WHERE id = ('$id')");
+        $consulta = $conexion->prepare("SELECT * FROM " . self::TABLA ." WHERE id = ('$id')");
         $consulta->execute();
         
         $registros = $consulta->fetchAll();
@@ -218,13 +218,13 @@ class Ubicación{
         $id = $_SESSION['idE'];
         $nombre = $_SESSION['nombre'];
         $sector = $_SESSION['sector'];
-        $consulta = $conexion->prepare("UPDATE ' . self::TABLA .' SET frecuente = '$nombre', sect_id = '$sector' WHERE id = '$id'");  
+        $consulta = $conexion->prepare("UPDATE " . self::TABLA ." SET frecuente = '$nombre', sect_id = '$sector' WHERE id = '$id'");  
         $consulta->execute();
     }
     public function Eliminar_LugarFrecuente(){
         $conexion = new Conexion();
         $id = $_SESSION['idE2'];
-        $consulta = $conexion->prepare("DELETE FROM ' . self::TABLA .' WHERE id = '$id'");  
+        $consulta = $conexion->prepare("DELETE FROM " . self::TABLA ." WHERE id = '$id'");  
         $consulta->execute();
 
     }

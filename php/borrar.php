@@ -12,8 +12,8 @@
     );
 
     echo $ubicación->Eliminar_LugarFrecuente();
-           /*echo"<script>
+           echo"<script>
             window.location = '../index.php';
-            </script>";*/
+            </script>";
 
 ?>
