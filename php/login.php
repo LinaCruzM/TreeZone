@@ -12,7 +12,7 @@
 
     $consulta = $usuario->iniciar();
 
-        echo"<script>
+        echo "<script>
         window.location = '../index.php';
         </script>";
 

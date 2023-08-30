@@ -8,13 +8,14 @@ class Usuarios{
     private $Correo;
     private $Contrasena;
     private $Residencia;
+    private $id;
     const TABLA = 'usuarios';
 
     public function Editar_usuario($Nombre,$Correo,$Contrasena){
 
-        $this->Nombre = $nuevoNombre;
-        $this->Correo = $nuevoCorreo;
-        $this->Contrasena = $nuevaContrasena;
+        $this->Nombre = $Nombre;
+        $this->Correo = $Correo;
+        $this->Contrasena = $Contrasena;
     }
 
     public function ver_Usuario($Nombre,$Correo,$Contrasena){
@@ -68,6 +69,7 @@ class Usuarios{
         $conexion = new Conexion();
         $consulta = $conexion->prepare("SELECT * FROM usuarios WHERE correo = '$this->Correo' AND contraseña = '$this->Contrasena'");
         $consulta->execute();
+        return $consulta;
         
     }
     public function Ver_Ubicación(){
@@ -165,10 +167,9 @@ class Ubicación{
         $conexion = null;
 
     }
-    public function Editar_LugarFrecuente($Nombre,){
+    public function Editar_LugarFrecuente($Nombre){
 
-        $this->Nombre = $nuevoNombre;
-        //$this-> = $nuevo;
+        $this->Nombre = $Nombre;
     }
     public function Eliminar_LugarFrecuente(){
 
