@@ -25,15 +25,19 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Index</title>
-  <link rel="icon" href="./img/">
+  <link rel="shortcut icon" href="img/icono.png" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" >
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./styles/styles.css">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
 </head>
 <body>
-  <header>
+<header class="d-flex">
+    <div class="logo2">
+      <img src="img/Logo.png" alt="Logo">
+    </div>
     <div class="">
         <div class="dropdown">
           <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -45,36 +49,42 @@
         </div>
     </div>
   </header>
+
   <main>
 
-    <section class="">
-      <h3>Crea un lugar frecuente</h3>
+    <section class="lugar">
+      <h1>Crea un lugar frecuente: </h1>
+      <form action="./php/LFrecuente.php" method="post" class="">
+        <div class="d-flex crear">
+          <div class="form1">
+            <label><i class="fa-solid fa-user"></i>Nombre</label><br>
+            <input type="text" placeholder="Nombre" autofocus autocomplete="on" required name="nombre">
+          </div>
+          <div>       
+            <label><i class="fa-solid fa-user"></i>Sector</label><br>
+            <select class="form-control" autocomplete="on" required name="sector">
+                <option value="">Seleccione una opción</option>
+                <?php
 
-      <form action="./php/LFrecuente.php" method="post" class="">        
-        <label><i class="fa-solid fa-user"></i>Nombre</label><br>
-        <input type="text" placeholder="Nombre" autofocus autocomplete="on" required name="nombre">
-        <label><i class="fa-solid fa-user"></i>Sector</label><br>
-        <select class="form-control" autocomplete="on" required name="sector">
-            <option value="">Seleccione una opción</option>
-            <?php
+                $consulta = Sector::mostrar();
 
-            $consulta = Sector::mostrar();
+                foreach ($consulta as $item):
 
-            foreach ($consulta as $item):
+                echo '<option value="'.$item['id'].'">'.$item['nombre'].'</option>';
 
-            echo '<option value="'.$item['id'].'">'.$item['nombre'].'</option>';
+                endforeach;
 
-            endforeach;
-
-            ?>
-            </select>
-        <button type="submit" class="button1">Enviar</button>
+                ?>
+              </select>
+          </div> 
+        </div>
+        <button type="submit" class="btn-primary">Enviar</button>
       </form>
-
-      <h3>Lugares Frecuentes:</h3>    
-      
+    </section>
+    <section class="lugar">
+      <h1>Lugares Frecuentes:</h1>
+      <div class="d-flex w-100">
       <?php
-
       $ubicación = new Ubicación(
       0,
       0,
@@ -88,15 +98,15 @@
         ?>
 
         <form action="./editar.php" method="post">
-        <div class="card text-start">
+        <div class="card text-start lugar-frec">
           <div class="card-body">
           <input type="hidden" name="id" value="<?php echo $item['id'] ?>">
-            <h4 class="card-title"><?php echo $item['frecuente'] ?></h4>
+            <h3 class="card-title"><?php echo $item['frecuente'] ?></h3>
             <?php 
             $_SESSION['sect_id'] = $item['sect_id'];
             $consulta = Ubicación::mostrar2();
-            foreach ($consulta as $item):
-            echo "<p>Sector: " . $item['nombre'] . "</p>";
+            foreach ($consulta as $item2):
+            echo "<p>Sector: " . $item2['nombre'] . "</p>";
             endforeach;
               ?></p>
               <p class="card-text">
@@ -111,6 +121,8 @@
 <?php
       endforeach;
   ?>
+      </div>   
+    
 
     </section>
   </main>

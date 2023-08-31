@@ -25,10 +25,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Index</title>
-  <link rel="icon" href="./img/">
+  <link rel="shortcut icon" href="img/icono.png" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" >
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./styles/styles.css">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
 </head>
@@ -63,13 +64,13 @@
         <input type="hidden" name="id" value="<?php echo $item['id'] ?>">
         <h4 class="card-title"><?php echo $item['frecuente'] ?></h4>
           <input class="card-text" type="text" placeholder="Nombre" autofocus autocomplete="on" name="nombre" value="<?php echo $item['frecuente'] ?>"> 
-          <?php $id=$item['sect_id'];
+          <?php 
+            $_SESSION['sect_id'] = $item['sect_id'];
             $consulta = Ubicación::mostrar2();
-            foreach($consulta as $item2):
-            echo "<p>Sector:".
-            $item2['nombre'];
+            foreach ($consulta as $item2):
+            echo "<p>Sector: " . $item2['nombre'] . "</p>";
             endforeach;
-            echo"</p>"?>
+            ?>
           <select class="form-control" autocomplete="on" required name="sector">
           <option value="<?php echo $item['sect_id']?>"> <?php echo $item2['nombre']?></option>
           <?php

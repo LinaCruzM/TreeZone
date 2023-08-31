@@ -1,0 +1,128 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: Tahoma, sans-serif;
+}
+header{
+    background-color: #4C6B2C;
+    align-items: center;
+    justify-content: center;
+}
+header img{
+    height: 20vh;
+}
+.logo{
+    width: fit-content;
+    margin: 0 auto;
+}
+.d-flex{
+    display: flex;
+    flex-wrap: wrap;
+}
+.w-50{
+    width: 50%;
+}
+.imagen img{
+    width: 100%;
+    height: 100%;
+}
+.registro{
+    padding: 2% 5%;
+}
+.registro h1{
+    font-size: 30px;
+    line-height: 0;
+}
+.registro i{
+    margin-right: 1vw;
+}
+.registro input{
+    width: 75%;
+    height: 5vh;
+}
+.registro div{
+    margin-bottom: 3vh;
+}
+.registro img{
+    height: 3vh;
+}
+.registro button{
+    width: 75%;
+    background-color: #4C6B2C;
+    color: white;
+    text-shadow: 2px 2px 2px black;
+    font-size: 14px;
+    padding: 2%;
+}
+.registro button:hover{
+    background-color: #A7CD76;
+    box-shadow: 1px 1px 50px rgba(128, 128, 128, 0.413)    ;
+}
+.logo2{
+    width: 85%;
+}
+.btn-primary,.btn-primary:hover,
+.btn-primary:focus,.btn-primary:active{
+    background-color: #4C6B2C;
+    border: none;
+    font-size: 16px;
+}
+.btn-primary:hover{
+    box-shadow: 0 0 20px#A7CD76;
+}
+.lugar{
+    width: 90%;
+    border: 1px solid black;
+    box-shadow: 20px 20px 60px #80808053;
+    border-radius: 5px;
+    padding: 2% 5%;
+    margin: 8vh auto;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.lugar:hover{
+    box-shadow: 20px 20px 60px #80808053;
+}
+.lugar i{
+    margin-right: 1vw;
+}
+.lugar label{
+    font-size: 16px;
+}
+.crear{
+    width: 80%;
+    margin:  3vh auto;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.form1{
+    width: 45%;
+    margin: 2% 0;
+}
+.lugar input, 
+.lugar select{
+    height: 6vh;
+    width: 25vw;
+}
+.lugar button{
+    font-size: 15px;
+    padding:  1% 6%;
+    margin-bottom: 5vh;
+}
+.lugar-frec{
+    border: 1px solid #4C6B2C;
+    width: 25vw;
+    height: 45vh;
+    padding: 8% 0;
+    margin-right: 1vw;
+}
+.ver{
+    width: 90vw;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
