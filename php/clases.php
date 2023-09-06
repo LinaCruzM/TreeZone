@@ -232,7 +232,8 @@ class Ubicación{
     }
     public function Eliminar_LugarFrecuente(){
         $conexion = new Conexion();
-        $consulta = $conexion->prepare("DELETE FROM " . self::TABLA ." WHERE id = '$this->id'");  
+        $consulta = $conexion->prepare("DELETE FROM " . self::TABLA ." WHERE id = :id");  
+                $consulta->bindParam(':id',$id)
         $consulta->execute();
 
     }
