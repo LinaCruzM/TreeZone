@@ -224,7 +224,10 @@ class Ubicación{
         $id = $_SESSION['idE'];
         $nombre = $_SESSION['nombre'];
         $sector = $_SESSION['sector'];
-        $consulta = $conexion->prepare("UPDATE " . self::TABLA ." SET frecuente = '$nombre', sect_id = '$sector' WHERE id = '$id'");  
+        $consulta = $conexion->prepare("UPDATE " . self::TABLA ." SET frecuente = :nombre, sect_id = :sector WHERE id = :id");  
+        $consulta->bindParam(':id',$id)
+        $consulta->bindParam(':nombre',$nombre)
+        $consulta->bindParam(':sector',$sector)
         $consulta->execute();
     }
     public function Eliminar_LugarFrecuente(){
