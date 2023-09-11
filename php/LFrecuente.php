@@ -10,10 +10,8 @@
         0
     );
 
-    $sql = "INSERT INTO ubicación(frecuente,usua_id,sect_id) VALUES ('$nombre','$id','$sector')";
-
     $ubicación->guardar();
-    echo $sql;
+    //echo $sql;
     echo"<script>
     window.location = '../index.php';
     </script>";
