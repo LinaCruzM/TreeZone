@@ -28,17 +28,17 @@
         <form action="./php/login.php" method="post" class="">
         <div>
         <label><i class="fa-solid fa-user"></i>Correo electrónico</label><br>
-        <input class="" type="email" placeholder="Correo electrónico" autofocus autocomplete="on" required name="correo">   
+        <input class="" type="email" placeholder="Correo electrónico" autofocus autocomplete="on" required name="correo">  <br> 
         </div><br>
         <div class="form2">
         <label><i class="fa-solid fa-lock"></i>Contraseña</label><br>
         <input class="" maxlength="15"
           oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" id="Contra"
-          type="password" placeholder="Contraseña" name="contraseña" required>
+          type="password" placeholder="Contraseña" name="contraseña" required> 
         <img onclick="VerC()" src="./img/ver.png">
-          </div><br>
-        <a class="link" href="./registro.php">¿No tienes una cuenta? Registrate aquí</a><br><br>
-        <button type="submit" class="button1">Ingresar</button>
+          </div><br><br>
+        <a class="link" href="./registro.php">¿No tienes una cuenta? Registrate aquí</a><br><br><br>
+        <button type="submit" class="button1">Ingresar</button><br><br>
       </form>
       </div>
       <div class="imagen w-50">

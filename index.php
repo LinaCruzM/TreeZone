@@ -81,7 +81,7 @@
         <button type="submit" class="btn-primary">Enviar</button>
       </form>
     </section>
-    <section class="lugar">
+    <section class="lugar2">
       <h1>Lugares Frecuentes:</h1>
       <div class="d-flex w-100">
       <?php
@@ -110,11 +110,11 @@
             endforeach;
               ?></p>
               <p class="card-text">
-            <input type="submit" button class="btn" value="Editar">
+            <input type="submit" button class="btn-primary boton" value="Editar">
             </form>
             <form action="./php/borrar.php" method="post">
           <input type="hidden" name="id" value="<?php echo $item['id'] ?>">
-          <input type="submit" button class="btn" value="Eliminar">
+          <input type="submit" button class="btn-secondary boton" value="Eliminar">
           </form>
                 </div>
                 </div>

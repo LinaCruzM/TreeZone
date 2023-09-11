@@ -24,7 +24,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Index</title>
+  <title>Editar Lugares</title>
   <link rel="shortcut icon" href="img/icono.png" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
@@ -34,7 +34,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
 </head>
 <body>
-  <header>
+<header class="d-flex">
+    <div class="logo2">
+      <img src="img/Logo.png" alt="Logo">
+    </div>
     <div class="">
         <div class="dropdown">
           <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -48,9 +51,9 @@
   </header>
   <main>
 
-    <section class="">
+    <section class="lugar">
 
-      <h3>Editar Lugar Frecuente:</h3>    
+      <h1>Editar Lugar Frecuente:</h1>    
       
       <?php 
         $_SESSION['sect_id'] = $_POST['id'];
@@ -59,7 +62,7 @@
         foreach ($consulta as $item):
       ?>
       <form action="./php/editar.php" method="post">
-      <div class="card text-start">
+      <div class="card text-start d-flex editar">
         <div class="card-body">
         <input type="hidden" name="id" value="<?php echo $item['id'] ?>">
         <h4 class="card-title"><?php echo $item['frecuente'] ?></h4>
@@ -68,7 +71,7 @@
             $_SESSION['sect_id'] = $item['sect_id'];
             $consulta = Ubicación::mostrar2();
             foreach ($consulta as $item2):
-            echo "<p>Sector: " . $item2['nombre'] . "</p>";
+            echo "<h4>Sector: " . $item2['nombre'] . "</h4>";
             endforeach;
             ?>
           <select class="form-control" autocomplete="on" required name="sector">
@@ -81,7 +84,7 @@
             echo '<option value="'.$item3['id'].'">'.$item3['nombre'].'</option>';
             endforeach;
         ?></select>
-          <input type="submit" button class="btn" value="Enviar">
+          <input type="submit" button class="btn-primary" value="Enviar">
           </form>
         </div>
       </div>

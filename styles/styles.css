@@ -71,7 +71,7 @@ header img{
 .btn-primary:hover{
     box-shadow: 0 0 20px#A7CD76;
 }
-.lugar{
+.lugar, .lugar2{
     width: 90%;
     border: 1px solid black;
     box-shadow: 20px 20px 60px #80808053;
@@ -91,7 +91,7 @@ header img{
 .lugar label{
     font-size: 16px;
 }
-.crear{
+.crear, .editar{
     width: 80%;
     margin:  3vh auto;
     justify-content: center;
@@ -112,17 +112,35 @@ header img{
     padding:  1% 6%;
     margin-bottom: 5vh;
 }
-.lugar-frec{
-    border: 1px solid #4C6B2C;
-    width: 25vw;
-    height: 45vh;
-    padding: 8% 0;
-    margin-right: 1vw;
-}
 .ver{
     width: 90vw;
     margin: 0 auto;
     justify-content: center;
     align-items: center;
     text-align: center;
+}
+.lugar-frec{
+    border: 1px solid #4C6B2C;
+    width: 25vw;
+    height: 45vh;
+    padding: 10% 0;
+    margin-right: 1vw;
+}
+.lugar-frec h3{
+    font-size: 25px;
+}
+.lugar-frec p{
+    font-size: 16px;
+    margin-bottom: 2vh;
+}
+.boton{
+    width: 80%;
+    height: 5vh;
+}
+.editar h4{
+    font-size: 22px;
+    line-height: 3;
+}
+.editar button{
+    margin-top: 5vh;
 }
