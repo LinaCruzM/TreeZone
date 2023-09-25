@@ -1,8 +1,8 @@
 <?php
-
-require './php/clases/usuarios.php';
+    require './php/clases.php';
+/*require './php/clases/usuarios.php';
 require './php/clases/ubicación.php';
-require './php/clases/sector.php';
+require './php/clases/sector.php';*/
 
     session_start();
 
@@ -31,6 +31,7 @@ require './php/clases/sector.php';
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link rel="stylesheet" href="./styles/styles.css">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
@@ -53,7 +54,14 @@ require './php/clases/sector.php';
   </header>
 
   <main>
-
+  <div class="text-center rounded border-3 p-3">
+            <h2>Gráfico Arboles</h2>
+            <canvas id="myChart" width="400" height="100"></canvas> 
+        </div>
+        <div class="text-center rounded border-3 p-3">
+            <h2>Gráfico Aire</h2>
+            <canvas id="myChart2" width="400" height="100"></canvas> 
+        </div>
     <section class="lugar">
       <h1>Crea un lugar frecuente: </h1>
       <form action="./php/LFrecuente.php" method="post" class="">
@@ -133,5 +141,75 @@ require './php/clases/sector.php';
   <footer>
   </footer>
   <script src="https://kit.fontawesome.com/0bf8ac12b9.js" crossorigin="anonymous"></script> <!--Link de conexión íconos-->
+  <script>
+    const ctx = document.getElementById('myChart');
+
+new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: [<?php
+    $consulta2 = Sector::mostrar();
+    $arboles= new Arboles(
+      0,
+      0,
+      $item['id']
+      );
+    $consulta = Arboles::GenerarGráfico();
+    foreach ($consulta2 as $item):
+            echo "'".$item['nombre']."',";
+            endforeach; ?>],
+    datasets: [{
+      label: 'Arboles por localida',
+      data: [<?php
+          foreach ($consulta as $item):
+            echo $item['cantidad'].",";
+            endforeach;
+            ?>],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  }
+});
+const ctx2 = document.getElementById('myChart2');
+
+new Chart(ctx2, {
+  type: 'bar',
+  data: {
+    labels: [<?php
+    $consulta3 = Sector::mostrar();
+    $aire= new Calidad_de_Aire(
+      0,
+      0,
+      $item['id']
+      );
+    $consulta = Calidad_de_Aire::GenerarGráfico();
+    foreach ($consulta3 as $item):
+            echo "'".$item['nombre']."',";
+            endforeach; ?>],
+    datasets: [{
+      label: 'Nivel de contaminación de aire',
+      data: [<?php
+          foreach ($consulta as $item):
+            echo $item['nivel'].",";
+            endforeach;
+            ?>],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  }
+});
+</script>
 </body>
 </html>

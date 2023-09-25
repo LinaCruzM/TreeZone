@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 25-09-2023 a las 01:29:50
--- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.0.28
+-- Host: 127.0.0.1
+-- Generation Time: Sep 25, 2023 at 05:08 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `treezone`
+-- Database: `treezone`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `aire`
+-- Table structure for table `aire`
 --
 
 CREATE TABLE `aire` (
@@ -34,7 +34,7 @@ CREATE TABLE `aire` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `aire`
+-- Dumping data for table `aire`
 --
 
 INSERT INTO `aire` (`id`, `nivel`, `fecha`) VALUES
@@ -52,7 +52,7 @@ INSERT INTO `aire` (`id`, `nivel`, `fecha`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `arboles`
+-- Table structure for table `arboles`
 --
 
 CREATE TABLE `arboles` (
@@ -62,7 +62,7 @@ CREATE TABLE `arboles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `arboles`
+-- Dumping data for table `arboles`
 --
 
 INSERT INTO `arboles` (`id`, `cantidad`, `fecha`) VALUES
@@ -79,7 +79,7 @@ INSERT INTO `arboles` (`id`, `cantidad`, `fecha`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `ciudad`
+-- Table structure for table `ciudad`
 --
 
 CREATE TABLE `ciudad` (
@@ -88,7 +88,7 @@ CREATE TABLE `ciudad` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `ciudad`
+-- Dumping data for table `ciudad`
 --
 
 INSERT INTO `ciudad` (`id`, `nombre`) VALUES
@@ -97,7 +97,7 @@ INSERT INTO `ciudad` (`id`, `nombre`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `sector`
+-- Table structure for table `sector`
 --
 
 CREATE TABLE `sector` (
@@ -111,35 +111,35 @@ CREATE TABLE `sector` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `sector`
+-- Dumping data for table `sector`
 --
 
 INSERT INTO `sector` (`id`, `nombre`, `gp`, `longitud`, `ciud_id`, `aire_id`, `arbol_id`) VALUES
-(1, 'Antonio Nariño', '0', '0', 1, 3, 7),
+(1, 'Antonio Narino', '0', '0', 1, 3, 7),
 (2, 'Barrios Unidos', '0', '0', 1, 6, 2),
 (3, 'Bosa', '0', '0', 1, 3, 7),
 (4, 'Chapinero', '0', '0', 1, 4, 7),
-(5, 'Ciudad Bolívar', '0', '0', 1, 4, 10),
-(6, 'Engativá', '0', '0', 1, 3, 7),
-(7, 'Fontibón\r\n', '0', '0', 1, 5, 10),
+(5, 'Ciudad Bolivar', '0', '0', 1, 4, 10),
+(6, 'Engativa', '0', '0', 1, 3, 7),
+(7, 'Fontibon', '0', '0', 1, 5, 10),
 (8, 'Kennedy', '0', '0', 1, 1, 9),
 (9, 'La Candelaria', '0', '0', 1, 8, 8),
-(10, 'Los Mártires', '0', '0', 1, 6, 5),
+(10, 'Los Martires', '0', '0', 1, 6, 5),
 (11, 'Puente Aranda', '0', '0', 1, 3, 6),
 (12, 'Rafael Uribe Uribe', '0', '0', 1, 1, 6),
-(13, 'San Cristóbal', '0', '0', 1, 7, 7),
+(13, 'San Cristobal', '0', '0', 1, 7, 7),
 (14, 'Santa fe', '0', '0', 1, 5, 7),
 (15, 'Suba', '0', '0', 1, 10, 10),
 (16, 'Sumapaz', '0', '0', 1, 2, 2),
 (17, 'Teusaquillo', '0', '0', 1, 6, 7),
 (18, 'Tunjuelito', '0', '0', 1, 6, 9),
-(19, 'Usaquén', '0', '0', 1, 1, 3),
+(19, 'Usaquen', '0', '0', 1, 1, 3),
 (20, 'Usme', '0', '0', 1, 2, 3);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `ubicación`
+-- Table structure for table `ubicación`
 --
 
 CREATE TABLE `ubicación` (
@@ -150,7 +150,7 @@ CREATE TABLE `ubicación` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `ubicación`
+-- Dumping data for table `ubicación`
 --
 
 INSERT INTO `ubicación` (`id`, `frecuente`, `usua_id`, `sect_id`) VALUES
@@ -161,7 +161,7 @@ INSERT INTO `ubicación` (`id`, `frecuente`, `usua_id`, `sect_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuarios`
+-- Table structure for table `usuarios`
 --
 
 CREATE TABLE `usuarios` (
@@ -174,7 +174,7 @@ CREATE TABLE `usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `usuarios`
+-- Dumping data for table `usuarios`
 --
 
 INSERT INTO `usuarios` (`id`, `nombre`, `correo`, `contraseña`, `residencia`, `fecha`) VALUES
@@ -184,29 +184,29 @@ INSERT INTO `usuarios` (`id`, `nombre`, `correo`, `contraseña`, `residencia`, `
 (11, 'marcela', 'marce85molina@gmail.com', 'a917847ce55c2ceaaefd60bbcb2805b2', 'colombia', '2023-08-31 02:16:22');
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `aire`
+-- Indexes for table `aire`
 --
 ALTER TABLE `aire`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `arboles`
+-- Indexes for table `arboles`
 --
 ALTER TABLE `arboles`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `ciudad`
+-- Indexes for table `ciudad`
 --
 ALTER TABLE `ciudad`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `sector`
+-- Indexes for table `sector`
 --
 ALTER TABLE `sector`
   ADD PRIMARY KEY (`id`),
@@ -215,7 +215,7 @@ ALTER TABLE `sector`
   ADD KEY `ciud_id` (`ciud_id`);
 
 --
--- Indices de la tabla `ubicación`
+-- Indexes for table `ubicación`
 --
 ALTER TABLE `ubicación`
   ADD PRIMARY KEY (`id`),
@@ -223,57 +223,57 @@ ALTER TABLE `ubicación`
   ADD KEY `ubicacion_ibfk_1` (`sect_id`);
 
 --
--- Indices de la tabla `usuarios`
+-- Indexes for table `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `aire`
+-- AUTO_INCREMENT for table `aire`
 --
 ALTER TABLE `aire`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT de la tabla `arboles`
+-- AUTO_INCREMENT for table `arboles`
 --
 ALTER TABLE `arboles`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT de la tabla `ciudad`
+-- AUTO_INCREMENT for table `ciudad`
 --
 ALTER TABLE `ciudad`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT de la tabla `sector`
+-- AUTO_INCREMENT for table `sector`
 --
 ALTER TABLE `sector`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
--- AUTO_INCREMENT de la tabla `ubicación`
+-- AUTO_INCREMENT for table `ubicación`
 --
 ALTER TABLE `ubicación`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT de la tabla `usuarios`
+-- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- Restricciones para tablas volcadas
+-- Constraints for dumped tables
 --
 
 --
--- Filtros para la tabla `sector`
+-- Constraints for table `sector`
 --
 ALTER TABLE `sector`
   ADD CONSTRAINT `sector_ibfk_1` FOREIGN KEY (`arbol_id`) REFERENCES `arboles` (`id`),
@@ -281,7 +281,7 @@ ALTER TABLE `sector`
   ADD CONSTRAINT `sector_ibfk_3` FOREIGN KEY (`ciud_id`) REFERENCES `ciudad` (`id`);
 
 --
--- Filtros para la tabla `ubicación`
+-- Constraints for table `ubicación`
 --
 ALTER TABLE `ubicación`
   ADD CONSTRAINT `ubicacion_ibfk_1` FOREIGN KEY (`sect_id`) REFERENCES `sector` (`id`),

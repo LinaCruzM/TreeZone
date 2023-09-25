@@ -1,8 +1,9 @@
 <?php
 
-    require './php/clases/usuarios.php';
+    require './php/clases.php';
+    /*require './php/clases/usuarios.php';
     require './php/clases/ubicación.php';
-    require './php/clases/sector.php';
+    require './php/clases/sector.php';*/
 
     session_start();
 
