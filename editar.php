@@ -59,9 +59,15 @@
       <h1>Editar Lugar Frecuente:</h1>    
       
       <?php 
-        $_SESSION['sect_id'] = $_POST['id'];
-        $consulta = Ubicación::mostrar3();
-
+      $ubicación = new Ubicación(
+        0,
+        0,
+        0,
+        $_SESSION['id']
+        );
+  
+        $consulta = Ubicación::mostrar();
+  
         foreach ($consulta as $item):
       ?>
       <form action="./php/editar.php" method="post">

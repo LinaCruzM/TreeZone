@@ -204,13 +204,13 @@ class Ubicación{
     public static function mostrar3(){
         $conexion = new Conexion();
         $id = $_SESSION['sect_id'];
-        $consulta = $conexion->prepare("SELECT * FROM " . self::TABLA ." WHERE id = :id)");
+        $consulta = $conexion->prepare("SELECT * FROM " . self::TABLA ." WHERE id = :id");
         $consulta->bindParam(':id',$id);
         $consulta->execute();
         
         $registros = $consulta->fetch();
-        if($registro){
-            return new self($registro['*'],$id);
+        if($registros){
+            return new self($registros['*'],$id);
         }else{
             return false;
         }
